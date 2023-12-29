@@ -1,0 +1,18 @@
+{
+    "name": "hiroya/yuyu-articles-backend",
+    "license": "MIT",
+    "autoload": {
+        "psr-4": {
+            "Hiroya\\YuyuArticlesBackend\\": "src/"
+        }
+    },
+    "authors": [
+        {
+            "name": "Hiroya-W",
+            "email": "hyuyukun@gmail.com"
+        }
+    ],
+    "require": {
+        "nyholm/psr7": "^1.8"
+    }
+}
