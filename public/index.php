@@ -8,22 +8,15 @@ use \Nyholm\Psr7\Factory\Psr17Factory;
 use \Nyholm\Psr7Server\ServerRequestCreator;
 use \Hiroya\YuyuArticlesBackend\Http\Controllers\HelloWorldController;
 
-$psr17Factory = new Psr17Factory();
+// DIコンテナの設定を読み込む
+$container = require __DIR__ . '/../src/dependency-injection.php';
 
-$creator = new ServerRequestCreator(
-    $psr17Factory, // ServerRequestFactory
-    $psr17Factory, // UriFactory
-    $psr17Factory, // UploadedFileFactory
-    $psr17Factory  // StreamFactory
-);
+$creator = $container->get(ServerRequestCreator::class);
 
 // スーパーグローバル変数を使わず、ここで取得したリクエストを使うようにする
 $serverRequest = $creator->fromGlobals();
 
 // 後でルーティング出来るようにする
-$response = (new HelloWorldController(
-    $psr17Factory,
-    $psr17Factory,
-))->handle($serverRequest);
+$response = ($container->get(HelloWorldController::class))->handle($serverRequest);
 
 (new \Laminas\HttpHandlerRunner\Emitter\SapiEmitter())->emit($response);
