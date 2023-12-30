@@ -18,6 +18,8 @@
         "psr/http-server-middleware": "^1.0",
         "laminas/laminas-httphandlerrunner": "^2.9",
         "nyholm/psr7-server": "^1.1",
-        "php-di/php-di": "^7.0"
+        "php-di/php-di": "^7.0",
+        "psr/http-message": "~1.1",
+        "relay/relay": "~2.0"
     }
 }
