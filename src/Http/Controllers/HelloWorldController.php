@@ -2,7 +2,6 @@
 
 declare(strict_types=1);
 
-
 namespace Hiroya\YuyuArticlesBackend\Http\Controllers;
 
 use Psr\Http\Message\ResponseFactoryInterface;
@@ -15,15 +14,14 @@ class HelloWorldController implements RequestHandlerInterface
 {
     public function __construct(
         private readonly ResponseFactoryInterface $responseFactory,
-        private readonly StreamFactoryInterface   $streamFactory
-    )
-    {
+        private readonly StreamFactoryInterface $streamFactory
+    ) {
     }
 
     public function handle(ServerRequestInterface $request): ResponseInterface
     {
         $content = [
-            "message" => "Hello, World"
+            'message' => 'Hello, World'
         ];
         $content = json_encode($content);
 

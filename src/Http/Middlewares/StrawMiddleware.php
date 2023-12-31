@@ -2,7 +2,6 @@
 
 declare(strict_types=1);
 
-
 namespace Hiroya\YuyuArticlesBackend\Http\Middlewares;
 
 use Psr\Http\Message\ResponseInterface;

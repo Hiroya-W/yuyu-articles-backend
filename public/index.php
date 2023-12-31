@@ -4,10 +4,9 @@ declare(strict_types=1);
 
 require_once __DIR__ . '/../vendor/autoload.php';
 
-use \Nyholm\Psr7\Factory\Psr17Factory;
-use \Nyholm\Psr7Server\ServerRequestCreator;
-use \Hiroya\YuyuArticlesBackend\Http\Middlewares;
-use \Hiroya\YuyuArticlesBackend\Http\Controllers\HelloWorldController;
+use Hiroya\YuyuArticlesBackend\Http\Controllers\HelloWorldController;
+use Hiroya\YuyuArticlesBackend\Http\Middlewares;
+use Nyholm\Psr7Server\ServerRequestCreator;
 use Relay\Relay;
 
 // DIコンテナの設定を読み込む

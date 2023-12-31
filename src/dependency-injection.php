@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-use \Nyholm\Psr7\Factory\Psr17Factory;
+use Nyholm\Psr7\Factory\Psr17Factory;
 
 use function DI\autowire;
 
@@ -22,4 +22,5 @@ $definitions = [
 ];
 
 $builder->addDefinitions($definitions);
+
 return $builder->build();
