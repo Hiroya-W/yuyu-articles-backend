@@ -21,5 +21,10 @@
         "php-di/php-di": "^7.0",
         "psr/http-message": "~1.1",
         "relay/relay": "~2.0"
+    },
+    "scripts": {
+        "lint": "./tools/phpstan/vendor/bin/phpstan analyze",
+        "lint-baseline": "./tools/phpstan/vendor/bin/phpstan analyze --generate-baseline --allow-empty-baseline",
+        "format": "./tools/php-cs-fixer/vendor/bin/php-cs-fixer fix"
     }
 }
