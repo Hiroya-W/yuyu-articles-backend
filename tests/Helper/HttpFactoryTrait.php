@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace zonuexe\PHPerKaigi\Psr15\Helper;
+namespace Hiroya\YuyuArticlesBackend\Helper;
 
 use InvalidArgumentException;
 use Nyholm\Psr7\Factory\Psr17Factory;
