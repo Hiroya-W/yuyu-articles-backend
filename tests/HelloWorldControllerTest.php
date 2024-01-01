@@ -24,9 +24,9 @@ class HelloWorldControllerTest extends TestCase
     }
 
     /**
-     * @dataProvider requestProvider
      * @param array{status_code:positive-int,headers:array<string,non-empty-list<string>>,body:string} $expected
      */
+    #[DataProvider('requestProvider')]
     public function test(ServerRequestInterface $request, array $expected): void
     {
         $actual = $this->subject->handle($request);
