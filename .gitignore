@@ -554,3 +554,9 @@ fabric.properties
 
 # formatter cache
 .php-cs-fixer.cache
+
+# test
+/.phpunit.cache/
+
+# coverage
+/coverage/
