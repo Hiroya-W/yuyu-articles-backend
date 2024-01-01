@@ -2,28 +2,30 @@
 
 declare(strict_types=1);
 
-namespace zonuexe\PHPerKaigi\Psr15;
+namespace Hiroya\YuyuArticlesBackend;
 
-use Psr\Http\Message\ServerRequestInterface as ServerRequest;
+use Hiroya\YuyuArticlesBackend\Http\Controllers\HelloWorldController;
+use PHPUnit\Framework\TestCase;
+use Psr\Http\Message\ServerRequestInterface;
 
-class HelloJsonHandlerTest extends TestCase
+class HelloWorldControllerTest extends TestCase
 {
     use Helper\HttpFactoryTrait;
 
-    private HelloJsonHandler $subject;
+    private HelloWorldController $subject;
 
     public function setUp(): void
     {
         parent::setUp();
 
-        $this->subject = new HelloJsonHandler($this->psr17factory(), $this->psr17factory());
+        $this->subject = new HelloWorldController($this->psr17factory(), $this->psr17factory());
     }
 
     /**
      * @dataProvider requestProvider
      * @param array{status_code:positive-int,headers:array<string,non-empty-list<string>>,body:string} $expected
      */
-    public function test(ServerRequest $request, array $expected): void
+    public function test(ServerRequestInterface $request, array $expected): void
     {
         $actual = $this->subject->handle($request);
 
@@ -33,7 +35,7 @@ class HelloJsonHandlerTest extends TestCase
     }
 
     /**
-     * @return iterable<array{ServerRequest, array{status_code:positive-int,headers:array<string,non-empty-list<string>>,body:string}}>
+     * @return iterable<array{ServerRequestInterface, array{status_code:positive-int,headers:array<string,non-empty-list<string>>,body:string}}>
      */
     public function requestProvider(): iterable
     {
@@ -42,25 +44,10 @@ class HelloJsonHandlerTest extends TestCase
             [
                 'status_code' => 200,
                 'headers' => [
-                    'Content-Type' => ['application/json'],
+                    'Content-Type' => ['application/json; charset=UTF-8'],
                 ],
-                'body' => '{"Hello":"World"}',
+                'body' => '{"message":"Hello, World"}',
             ],
         ];
-
-        $default_expected = [
-            'status_code' => 404,
-            'headers' => [],
-            'body' => '',
-        ];
-
-        $http_methods = ['POST', 'PUT', 'DELETE'];
-
-        foreach ($http_methods as $method) {
-            yield $method => [
-                $this->createServerRequest($method, '/dummy'),
-                $default_expected,
-            ];
-        }
     }
 }

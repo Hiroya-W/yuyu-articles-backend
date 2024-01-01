@@ -6,6 +6,11 @@
             "Hiroya\\YuyuArticlesBackend\\": "src/"
         }
     },
+    "autoload-dev": {
+        "psr-4": {
+            "Hiroya\\YuyuArticlesBackend\\": "tests/"
+        }
+    },
     "authors": [
         {
             "name": "Hiroya-W",
@@ -29,5 +34,8 @@
         "lint": "./tools/phpstan/vendor/bin/phpstan analyze",
         "lint-baseline": "./tools/phpstan/vendor/bin/phpstan analyze --generate-baseline --allow-empty-baseline",
         "format": "./tools/php-cs-fixer/vendor/bin/php-cs-fixer fix"
+    },
+    "require-dev": {
+        "phpunit/phpunit": "^10.5"
     }
 }
