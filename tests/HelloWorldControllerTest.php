@@ -10,6 +10,7 @@ use PHPUnit\Framework\Attributes\DataProvider;
 use PHPUnit\Framework\TestCase;
 use Psr\Http\Message\ServerRequestInterface;
 
+#[CoversClass(HelloWorldController::class)]
 class HelloWorldControllerTest extends TestCase
 {
     use Helper\HttpFactoryTrait;
