@@ -5,6 +5,8 @@ declare(strict_types=1);
 namespace Hiroya\YuyuArticlesBackend;
 
 use Hiroya\YuyuArticlesBackend\Http\Controllers\HelloWorldController;
+use PHPUnit\Framework\Attributes\CoversClass;
+use PHPUnit\Framework\Attributes\DataProvider;
 use PHPUnit\Framework\TestCase;
 use Psr\Http\Message\ServerRequestInterface;
 
@@ -37,10 +39,10 @@ class HelloWorldControllerTest extends TestCase
     /**
      * @return iterable<array{ServerRequestInterface, array{status_code:positive-int,headers:array<string,non-empty-list<string>>,body:string}}>
      */
-    public function requestProvider(): iterable
+    public static function requestProvider(): iterable
     {
         yield 'GET' => [
-            $this->createServerRequest('GET', '/dummy'),
+            self::createServerRequest('GET', '/dummy'),
             [
                 'status_code' => 200,
                 'headers' => [

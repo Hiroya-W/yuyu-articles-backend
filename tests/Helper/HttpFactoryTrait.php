@@ -26,29 +26,29 @@ use RuntimeException;
 
 trait HttpFactoryTrait
 {
-    public function getRequestFactory(): RequestFactoryInterface
+    public static function getRequestFactory(): RequestFactoryInterface
     {
-        return $this->psr17factory();
+        return self::psr17factory();
     }
 
-    public function getResponseFactory(): ResponseFactoryInterface
+    public static function getResponseFactory(): ResponseFactoryInterface
     {
-        return $this->psr17factory();
+        return self::psr17factory();
     }
 
-    public function getServerRequestFactory(): ServerRequestFactoryInterface
+    public static function getServerRequestFactory(): ServerRequestFactoryInterface
     {
-        return $this->psr17factory();
+        return self::psr17factory();
     }
 
-    public function getStreamFactory(): StreamFactoryInterface
+    public static function getStreamFactory(): StreamFactoryInterface
     {
-        return $this->psr17factory();
+        return self::psr17factory();
     }
 
-    public function getUriFactory(): UriFactoryInterface
+    public static function getUriFactory(): UriFactoryInterface
     {
-        return $this->psr17factory();
+        return self::psr17factory();
     }
 
     /**
@@ -56,9 +56,9 @@ trait HttpFactoryTrait
      *
      * The stream SHOULD be created with a temporary resource.
      */
-    public function createStream(string $contents): StreamInterface
+    public static function createStream(string $contents): StreamInterface
     {
-        return $this->getStreamFactory()->createStream($contents);
+        return self::getStreamFactory()->createStream($contents);
     }
 
     /**
@@ -75,9 +75,9 @@ trait HttpFactoryTrait
      * @throws RuntimeException If the file cannot be opened.
      * @throws InvalidArgumentException If the mode is invalid.
      */
-    public function createStreamFromFile(string $filename, string $mode = 'r'): StreamInterface
+    public static function createStreamFromFile(string $filename, string $mode = 'r'): StreamInterface
     {
-        return $this->getStreamFactory()->createStreamFromFile($filename, $mode);
+        return self::getStreamFactory()->createStreamFromFile($filename, $mode);
     }
 
     /**
@@ -88,9 +88,9 @@ trait HttpFactoryTrait
      *     in the generated response. If none is provided, implementations MAY use
      *     the defaults as suggested in the HTTP specification.
      */
-    public function createResponse(int $code = 200, string $reasonPhrase = ''): ResponseInterface
+    public static function createResponse(int $code = 200, string $reasonPhrase = ''): ResponseInterface
     {
-        return $this->getResponseFactory()->createResponse($code, $reasonPhrase);
+        return self::getResponseFactory()->createResponse($code, $reasonPhrase);
     }
 
     /**
@@ -106,12 +106,12 @@ trait HttpFactoryTrait
      *     which to seed the generated request instance.
      * @phpstan-param array<string,string|array> $serverParams
      */
-    public function createServerRequest(string $method, $uri, array $serverParams = []): ServerRequestInterface
+    public static function createServerRequest(string $method, $uri, array $serverParams = []): ServerRequestInterface
     {
-        return $this->getServerRequestFactory()->createServerRequest($method, $uri, $serverParams);
+        return self::getServerRequestFactory()->createServerRequest($method, $uri, $serverParams);
     }
 
-    private function psr17factory(): Psr17Factory
+    private static function psr17factory(): Psr17Factory
     {
         return new Psr17Factory();
     }
