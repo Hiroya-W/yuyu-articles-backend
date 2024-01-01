@@ -7,13 +7,25 @@ on:
 jobs:
   static-analysis:
     runs-on: ubuntu-20.04
+    strategy:
+      matrix:
+        php-versions: [ 8.2 ]
     steps:
       - uses: actions/checkout@v3
-      - name: Setup PHP 8.2
+      - name: Setup PHP ${{ matrix.php-versions }}
         uses: shivammathur/setup-php@v2
         with:
-          php-version: '8.2'
-      - uses: php-actions/composer@v6
+          php-version: ${{ matrix.php-versions }}
+      - name: Install dependencies
+        uses: php-actions/composer@v6
+      - name: Install PHP-CS-Fixer
+        uses: php-actions/composer@v6
+        with:
+          working_dir: "tools/php-cs-fixer"
+      - name: Install PHPStan
+        uses: php-actions/composer@v6
+        with:
+          working_dir: "tools/phpstan"
       - uses: actions/cache@v3
         with:
           path: .php-cs-fixer.cache
@@ -21,10 +33,6 @@ jobs:
           restore-keys: |
             ${{ runner.OS }}-${{ github.repository }}-phpcsfixer-
       - name: Run PHP-CS-Fixer
-        uses: docker://oskarstark/php-cs-fixer-ga
-        with:
-          args: --config=.php-cs-fixer.dist.php --diff --dry-run
+        run: composer format-check
       - name: Run PHPStan
-        uses: php-actions/phpstan@v3
-        with:
-          configuration: phpstan.dist.neon
+        run: composer lint

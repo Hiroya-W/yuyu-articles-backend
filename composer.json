@@ -33,7 +33,8 @@
     "scripts": {
         "lint": "./tools/phpstan/vendor/bin/phpstan analyze",
         "lint-baseline": "./tools/phpstan/vendor/bin/phpstan analyze --generate-baseline --allow-empty-baseline",
-        "format": "./tools/php-cs-fixer/vendor/bin/php-cs-fixer fix"
+        "format": "./tools/php-cs-fixer/vendor/bin/php-cs-fixer fix",
+        "format-check": "./tools/php-cs-fixer/vendor/bin/php-cs-fixer fix --diff --dry-run"
     },
     "require-dev": {
         "phpunit/phpunit": "^10.5"
