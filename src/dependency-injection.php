@@ -17,6 +17,8 @@ $definitions = [
     Psr\Http\Message\UploadedFileFactoryInterface::class => $psr17Factory,
     Psr\Http\Message\UriFactoryInterface::class => $psr17Factory,
     \Nyholm\Psr7Server\ServerRequestCreator::class => autowire(),
+    // Middlewares
+    \Hiroya\YuyuArticlesBackend\Http\Middlewares\StrawMiddleware::class => autowire(),
     // Controllers
     \Hiroya\YuyuArticlesBackend\Http\Controllers\HelloWorldController::class => autowire()
 ];
