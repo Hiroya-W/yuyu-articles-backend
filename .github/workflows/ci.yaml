@@ -16,11 +16,11 @@ jobs:
           key: ${{ runner.OS }}-${{ github.repository }}-phpcsfixer-${{ github.sha }}
           restore-keys: |
             ${{ runner.OS }}-${{ github.repository }}-phpcsfixer-
-      - name: PHP-CS-Fixer
+      - name: Run PHP-CS-Fixer
         uses: docker://oskarstark/php-cs-fixer-ga
         with:
           args: --config=.php-cs-fixer.dist.php --diff --dry-run
-      - name: PHPStan
+      - name: Run PHPStan
         uses: php-actions/phpstan@v3
         with:
           configuration: phpstan.dist.neon
