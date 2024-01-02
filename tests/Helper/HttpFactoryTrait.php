@@ -104,7 +104,7 @@ trait HttpFactoryTrait
      * @param UriInterface|string $uri The URI associated with the request.
      * @param array $serverParams An array of Server API (SAPI) parameters with
      *     which to seed the generated request instance.
-     * @phpstan-param array<string,string|array> $serverParams
+     * @phpstan-param array<string,string|int|array<string,non-empty-list<string>>> $serverParams
      */
     public static function createServerRequest(string $method, $uri, array $serverParams = []): ServerRequestInterface
     {
